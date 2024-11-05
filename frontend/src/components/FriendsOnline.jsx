@@ -1,8 +1,7 @@
-// src/components/FriendsOnline.js
 import React from 'react';
 
 const FriendsOnline = () => {
-  // Sample data for online friends
+  // Sample data 
   const friends = [
     { id: 1, name: 'Alex', avatar: 'https://via.placeholder.com/50' },
     { id: 2, name: 'Jordan', avatar: 'https://via.placeholder.com/50' },

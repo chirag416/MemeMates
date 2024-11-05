@@ -1,4 +1,3 @@
-// src/components/Sidebar.js
 import React from 'react';
 import { User, Heart, Image, LogOut } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -18,7 +17,7 @@ const Sidebar = () => (
       <button
         onClick={() => {
           localStorage.removeItem('token');
-          window.location.href = '/login';
+          window.location.href = '/';
         }}
         className="flex items-center space-x-2 text-pink-500"
       >

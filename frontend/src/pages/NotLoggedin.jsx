@@ -1,18 +1,18 @@
-// src/pages/NotLoggedIn.js
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Sparkles, MessageCircleHeart, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const FeatureCard = ({ icon: Icon, title, description }) => (
+const FeatureCard = ({ icon: Icon, title, description, bgClass }) => (
   <motion.div
-    className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg"
+    className={`p-6 rounded-xl shadow-lg ${bgClass} relative overflow-hidden`} 
     whileHover={{ scale: 1.05 }}
     transition={{ type: "spring", stiffness: 300 }}
   >
     <Icon className="w-8 h-8 text-pink-500 mb-3" />
     <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
     <p className="text-gray-600">{description}</p>
+    <div className="absolute inset-0 bg-opacity-25 z-0"></div>
   </motion.div>
 );
 
@@ -79,16 +79,19 @@ const NotLoggedIn = () => {
               icon={MessageCircleHeart}
               title="Match Through Memes"
               description="Find your perfect match based on your meme preferences and sense of humor."
+              bgClass="bg-pink-200" 
             />
             <FeatureCard 
               icon={Users}
               title="Connect with Others"
               description="Join a community of meme enthusiasts and build meaningful connections."
+              bgClass="bg-purple-200" 
             />
             <FeatureCard 
               icon={Heart}
               title="Share the Love"
               description="Express yourself through memes and spread joy in our unique dating community."
+              bgClass="bg-blue-200" 
             />
           </div>
 
@@ -109,7 +112,6 @@ const NotLoggedIn = () => {
         </div>
       </div>
 
-      {/* Background decorative elements */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none overflow-hidden -z-10">
         <motion.div
           className="absolute top-20 left-10 w-64 h-64 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70"

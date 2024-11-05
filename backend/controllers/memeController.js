@@ -1,4 +1,3 @@
-// controllers/memeController.js
 const Meme = require('../models/Meme');
 const User = require('../models/User');
 

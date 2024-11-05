@@ -1,4 +1,3 @@
-// routes/memeRoutes.js
 const express = require('express');
 const { getNextMeme, likeMeme, dislikeMeme } = require('../controllers/memeController');
 const authMiddleware = require('../middleware/authMiddleware');

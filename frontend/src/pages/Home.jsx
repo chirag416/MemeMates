@@ -1,4 +1,3 @@
-// src/pages/Home.js
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import FriendsOnline from '../components/FriendsOnline';
@@ -35,12 +34,9 @@ const Home = () => {
 
   return (
     <div className="h-screen bg-pink-100 grid grid-cols-4">
-      {/* Sidebar occupies 1/4 of the screen */}
       <div className="col-span-1">
         <Sidebar />
       </div>
-      
-      {/* MemeCard occupies the central 2/4 of the screen */}
       <div className="col-span-2 flex items-center justify-center p-6">
         {meme ? (
           <MemeCard meme={meme} onLike={likeMeme} onDislike={dislikeMeme} />
@@ -48,8 +44,6 @@ const Home = () => {
           <div className="text-gray-500">Loading...</div>
         )}
       </div>
-      
-      {/* FriendsOnline occupies the last 1/4 of the screen */}
       <div className="col-span-1 p-6">
         <FriendsOnline />
       </div>

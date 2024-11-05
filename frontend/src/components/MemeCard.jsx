@@ -20,17 +20,17 @@ const MemeCard = () => {
   const fetchNextMeme = () => {
     const nextIndex = (memeIndex + 1) % staticMemes.length;
     setMemeIndex(nextIndex);
-    setAction(''); // Reset action after fetching the next meme
+    setAction(''); 
   };
 
   const handleLike = () => {
     setAction('liked');
-    setTimeout(fetchNextMeme, 500); // Wait for animation to complete
+    setTimeout(fetchNextMeme, 500); 
   };
 
   const handleDislike = () => {
     setAction('disliked');
-    setTimeout(fetchNextMeme, 500); // Wait for animation to complete
+    setTimeout(fetchNextMeme, 500); 
   };
 
   return (
@@ -38,45 +38,45 @@ const MemeCard = () => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.5 }} // Smooth transition for the card
-      className="meme-card p-4 rounded-lg shadow-lg bg-pink-150 relative" // Add relative positioning
-      key={meme._id} // Ensures unique key for animation
+      transition={{ duration: 0.5 }} 
+      className="meme-card p-4 rounded-lg shadow-lg bg-pink-150 relative"
+      key={meme._id}
     >
       <motion.img
         src={meme.imageUrl}
         alt="Meme"
         className="rounded-lg mb-4"
-        animate={{ opacity: action ? 0.5 : 1 }} // Fades out when liked/disliked
-        transition={{ duration: 0.5 }} // Smooth transition for image opacity
+        animate={{ opacity: action ? 0.5 : 1 }} 
+        transition={{ duration: 0.5 }} 
       />
       <div className="actions flex justify-around">
         <motion.button
           onClick={handleDislike}
           className="text-red-500"
-          whileHover={{ scale: 1.3 }} // Scale effect on hover
-          whileTap={{ scale: 0.9 }} // Scale effect on click
-          transition={{ type: 'spring', stiffness: 300 }} // Spring effect for button interactions
+          whileHover={{ scale: 1.3 }} 
+          whileTap={{ scale: 0.9 }} 
+          transition={{ type: 'spring', stiffness: 300 }} 
         >
-          <X size={32} /> {/* Increase size of the dislike icon */}
+          <X size={32} /> 
         </motion.button>
         <motion.button
           onClick={handleLike}
           className="text-pink-500"
-          whileHover={{ scale: 1.3 }} // Scale effect on hover
-          whileTap={{ scale: 0.9 }} // Scale effect on click
-          transition={{ type: 'spring', stiffness: 300 }} // Spring effect for button interactions
+          whileHover={{ scale: 1.3 }} 
+          whileTap={{ scale: 0.9 }} 
+          transition={{ type: 'spring', stiffness: 300 }}
         >
-          <Heart size={32} /> {/* Increase size of the like icon */}
+          <Heart size={32} /> 
         </motion.button>
       </div>
       {action && (
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
-            className={`text-8xl font-bold ${action === 'liked' ? 'text-pink-500' : 'text-red-500'}`} // Increased size of the action feedback
+            className={`text-8xl font-bold ${action === 'liked' ? 'text-pink-500' : 'text-red-500'}`}
             initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 0.7, scale: 1 }} // Reduced opacity for fading effect
+            animate={{ opacity: 0.7, scale: 1 }} 
             exit={{ opacity: 0, scale: 0 }}
-            transition={{ duration: 0.5 }} // Smooth transition for action feedback
+            transition={{ duration: 0.5 }}
           >
             {action === 'liked' ? '💖' : '💔'}
           </motion.div>
