@@ -5,14 +5,12 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NotLoggedIn from './pages/NotLoggedin';
-import Navbar from './components/Navbar';
 
 function App() {
   const isAuthenticated = Boolean(localStorage.getItem('token'));
 
   return (
     <Router>
-      <Navbar />
       <Routes>
         <Route path="/not-logged-in" element={<NotLoggedIn />} />
         <Route path="/" element={isAuthenticated ? <Home /> : <NotLoggedIn />} />

@@ -1,3 +1,4 @@
+// controllers/memeController.js
 const Meme = require('../models/Meme');
 const User = require('../models/User');
 
@@ -6,15 +7,16 @@ exports.getNextMeme = async (req, res) => {
   try {
     const user = await User.findById(req.user);
     const viewedMemes = [...user.likedMemes, ...user.dislikedMemes];
-    
-    const meme = await Meme.findOne({ _id: { $nin: viewedMemes } });
-    if (!meme) {
+    const nextMeme = await Meme.findOne({ _id: { $nin: viewedMemes } }); // Get a meme not viewed by the user
+
+    if (!nextMeme) {
       return res.status(404).json({ message: 'No more memes available.' });
     }
 
-    res.json(meme);
+    res.json(nextMeme);
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching meme.' });
+    console.error("Error in getNextMeme:", error.message);
+    res.status(500).json({ message: 'Error fetching meme from the server.' });
   }
 };
 
@@ -31,6 +33,7 @@ exports.likeMeme = async (req, res) => {
 
     res.status(200).json({ message: 'Meme liked successfully.' });
   } catch (error) {
+    console.error('Error liking meme:', error);
     res.status(500).json({ message: 'Error liking meme.' });
   }
 };
@@ -48,6 +51,7 @@ exports.dislikeMeme = async (req, res) => {
 
     res.status(200).json({ message: 'Meme disliked successfully.' });
   } catch (error) {
+    console.error('Error disliking meme:', error);
     res.status(500).json({ message: 'Error disliking meme.' });
   }
 };
