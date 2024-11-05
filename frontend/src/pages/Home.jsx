@@ -9,7 +9,7 @@ const Home = () => {
 
   const fetchNextMeme = async () => {
     try {
-      const { data } = await api.get('/meme/next', {
+      const { data } = await api.get('https://mememates.onrender.com/meme/next', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       setMeme(data);
@@ -19,12 +19,12 @@ const Home = () => {
   };
 
   const likeMeme = async (id) => {
-    await api.post('/meme/like', { memeId: id });
+    await api.post('https://mememates.onrender.com/meme/like', { memeId: id });
     fetchNextMeme();
   };
 
   const dislikeMeme = async (id) => {
-    await api.post('/meme/dislike', { memeId: id });
+    await api.post('https://mememates.onrender.com/meme/dislike', { memeId: id });
     fetchNextMeme();
   };
 

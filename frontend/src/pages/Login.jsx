@@ -7,7 +7,7 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const { data } = await api.post('/auth/login', { username, password });
+    const { data } = await api.post('https://mememates.onrender.com/auth/login', { username, password });
     localStorage.setItem('token', data.token);
     window.location.href = '/';
   };

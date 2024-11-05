@@ -10,7 +10,7 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    await api.post('/auth/register', { username, password, gender, age });
+    await api.post('https://mememates.onrender.com/auth/register', { username, password, gender, age });
     window.location.href = '/login';
   };
 
